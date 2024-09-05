@@ -71,9 +71,9 @@ struct dynamic_load_runtime {
   {
     // query if the function has already been loaded
     auto* handle = ::dlsym(RTLD_DEFAULT, func_name);
-    if(!handle) {
+    if (!handle) {
       auto* runtime = get_cuda_runtime_handle();
-      handle  = ::dlsym(runtime, func_name);
+      handle        = ::dlsym(runtime, func_name);
     }
     if (!handle) { return std::nullopt; }
     auto* function_ptr = reinterpret_cast<signature>(handle);
